@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Els Coberts - Cuina Mediterrània</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Menú principal">
+        <ul>
+          <li><a href="#nosaltres">Sobre nosaltres</a></li>
+          <li><a href="#carta">La nostra carta</a></li>
+          <li><a href="#galeria">Galeria de fotos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="content">
+      <section class="capsalera" aria-labelledby="titol-principal">
+        <div class="contingut">
+          <h1 id="titol-principal">Restaurant<strong>Els Coberts</strong></h1>
+          <p>Experiència gastronòmica única al cor de la ciutat.</p>
+        </div>
+        <img
+          src="https://placehold.co/1920x1080"
+          alt="Interior il·luminat del restaurant amb taules de fusta parades"
+        />
+      </section>
+
+      <div class="container">
+        <section id="nosaltres" class="about" aria-labelledby="titol-about">
+          <h2 id="titol-about">Sobre nosaltres</h2>
+
+          <article class="row">
+            <img
+              src="https://placehold.co/600x400"
+              alt="Plat de presentació de la casa"
+            />
+            <p>
+              Des de 1980, treballem amb productes de proximitat per oferir la
+              millor qualitat.
+            </p>
+          </article>
+
+          <article class="row reverse">
+            <p>
+              La nostra filosofia es basa en el respecte a la tradició i la
+              innovació constant.
+            </p>
+            <img
+              src="https://placehold.co/600x400"
+              alt="Equip de cuina treballant"
+            />
+          </article>
+        </section>
+        <section id="carta" class="carta-section">
+          <h2>Carta</h2>
+
+          <div class="carta-grid">
+            <div class="menu-main">Menú</div>
+
+            <div class="sidebar s1">Menú 1</div>
+            <div class="content c1">
+              <h3>Contingut</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="card img1">
+              <img src="https://placehold.co/400x250" alt="Plat de pasta" />
+              <span>pasta</span>
+            </div>
+            <div class="card img2">
+              <img src="https://placehold.co/400x250" alt="Entrants variats" />
+              <span>entrants</span>
+            </div>
+
+            <div class="sidebar s2">Menú 2</div>
+            <div class="content c2">
+              <h3>Contingut</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div class="card img3">
+              <img src="https://placehold.co/400x250" alt="Amanida fresca" />
+              <span>amanida</span>
+            </div>
+            <div class="card img4">
+              <img src="https://placehold.co/400x250" alt="Peix al forn" />
+              <span>peix</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="galeria">
+          <h4>Galeria d'imatges</h4>
+          <div class="galeria-flex">
+            <img src="https://placehold.co/400x250" alt="Plat 1" />
+            <img src="https://placehold.co/400x250" alt="Plat 2" />
+            <img src="https://placehold.co/400x250" alt="Plat 3" />
+            <img src="https://placehold.co/400x250" alt="Plat 4" />
+            <img src="https://placehold.co/400x250" alt="Plat 5" />
+            <img src="https://placehold.co/400x250" alt="Plat 6" />
+            <img src="https://placehold.co/400x250" alt="Plat 7" />
+            <img src="https://placehold.co/400x250" alt="Plat 8" />
+          </div>
+        </section>
+
+        <section id="reserva">
+          <h2>Reserva la teva taula</h2>
+          <form action="#" method="POST">
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="El teu nom complet"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="people">Número de persones</label>
+              <input type="number" id="people" name="people" min="1" required />
+            </div>
+
+            <div class="form-group">
+              <label for="date">Data</label>
+              <input type="date" id="date" name="date" required />
+            </div>
+
+            <div class="form-group">
+              <label for="time">Hora</label>
+              <input type="time" id="time" name="time" required />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="message">Descripció</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Alguna al·lèrgia o petició especial?"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Reservar</button>
+          </form>
+        </section>
+      </div>
+
+      <footer>
+        <div>
+          <div class="email">
+            <span class="material-symbols-outlined"> mail </span>
+            <p>mail@mail.com</p>
+          </div>
+          <div class="email">
+            <span class="material-symbols-outlined"> call </span>
+            <p>mail@mail.com</p>
+          </div>
+        </div>
+        <div class="logo"><img src="https://placehold.co/40" alt="" /></div>
+      </footer>
+    </main>
+
+    <nav class="floating-button" aria-label="Reserva ràpida">
+      <a href="#reserva" class="btn-reserva">Reservar taula</a>
+    </nav>
+  </body>
+</html>
