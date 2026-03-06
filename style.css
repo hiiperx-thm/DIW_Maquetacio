@@ -1,66 +1,97 @@
+:root {
+  --navy-deep: #0f172a;
+  --sand-warm: #f8f5f0;
+  --gold-accent: #c5a059;
+  --text-slate: #334155;
+  --white: #ffffff;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Open Sans',
-    'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--sand-warm);
+  color: var(--text-slate);
+  line-height: 1.6;
 }
 
 .container {
   max-width: 1200px;
   margin: auto;
+  width: 90%;
 }
 
-/* --- Menú Fix (0,5 punts) --- */
+/* --- Menú Fix */
 header {
-  background-color: #000000;
-  padding: 15px 30px;
-  position: fixed; /* Fixat a la part superior */
+  background-color: rgba(15, 23, 42, 0.9); /* Navy con transparència */
+  backdrop-filter: blur(10px);
+  padding: 1.25rem 5%;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 nav ul {
   list-style: none;
   display: flex;
   justify-content: flex-end;
-  gap: 20px;
+  gap: 2rem;
 }
 
 li a {
   text-decoration: none;
-  color: white;
-  transition: 0.3s;
+  color: var(--white);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  padding-bottom: 5px;
+}
+
+li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--gold-accent);
+  transition: var(--transition-smooth);
+}
+
+li a:hover::after {
+  width: 100%;
 }
 
 li a:hover {
-  text-decoration: underline;
-  text-decoration-color: white;
+  color: var(--gold-accent);
 }
 
 li a:focus {
-  outline: 2px solid white;
+  outline: 2px solid var(--gold-accent);
   outline-offset: 4px;
 }
 
-/* Capçalera */
+/* Capçalera*/
 .capsalera {
   position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .capsalera img {
@@ -68,77 +99,130 @@ li a:focus {
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: brightness(0.85);
 }
 
-.capsalera div {
+.capsalera .contingut {
   position: absolute;
   top: 50%;
-  left: 5%;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 10px;
-  border: 1px solid #000000;
-  padding: 20px;
-  text-align: left;
+  left: 10%;
   transform: translateY(-50%);
-  color: black;
-  max-width: 40%;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border-left: 5px solid var(--gold-accent);
+  padding: 3rem;
+  text-align: left;
+  max-width: 40rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-out;
+  z-index: 2;
 }
 
-.capsalera div p:first-child {
-  font-size: clamp(30px, 5vw, 50px);
-  font-weight: bold;
-  line-height: 1.2;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.capsalera h1 {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  color: var(--navy-deep);
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.capsalera h1 strong {
+  display: block;
+  font-weight: 700;
+  color: var(--gold-accent);
+}
+
+.capsalera p {
+  font-size: 1.25rem;
+  color: var(--text-slate);
+  font-style: italic;
 }
 
 /* Sobre nosaltres */
 .about {
-  display: grid;
-  gap: 40px;
-  padding: 80px 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 8rem 5%;
 }
 
 .about h2 {
-  text-align: left;
-  grid-column: 1 / -1;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--navy-deep);
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .about .row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4rem;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.about .row.reverse {
+  flex-direction: row-reverse;
 }
 
 .about img {
   width: 100%;
+  max-width: 35rem;
   height: auto;
-  border-radius: 8px;
+  border-radius: 2rem;
   object-fit: cover;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-smooth);
+}
+
+.about img:hover {
+  transform: translateY(-10px);
 }
 
 .about p {
+  flex: 1;
+  min-width: 18rem;
   line-height: 1.8;
   font-size: 1.2rem;
-  color: #2d2d2d;
+  color: var(--text-slate);
 }
 
-/* Carta */
+/* Carta Section */
 .carta-section {
-  padding: 50px 5%;
+  padding: 6rem 5%;
+  background-color: var(--white);
 }
 
 .carta-section h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--navy-deep);
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .carta-grid {
   display: grid;
-  /* Definició de 3 columnes: una estreta per al lateral i dues per a les imatges */
-  grid-template-columns: 150px 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(1fr, 1fr)
+  ); /* Adaptatiu per flexibilitat */
+  grid-template-columns: 12rem 1fr 1fr;
+  gap: 1.5rem;
   grid-template-areas:
     'header header header'
     'side1   cont1  cont1'
@@ -147,14 +231,17 @@ li a:focus {
     'side2   img3   img4';
 }
 
-/* Assignació d'àrees */
+/* Àrees del Grid */
 .menu-main {
   grid-area: header;
-  border: 1px solid #000;
-  border-radius: 15px;
-  padding: 20px;
+  background-color: var(--navy-deep);
+  color: var(--gold-accent);
+  padding: 2rem;
   text-align: center;
-  font-size: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  border-radius: 1rem;
+  letter-spacing: 0.2rem;
 }
 
 .s1 {
@@ -165,11 +252,18 @@ li a:focus {
 }
 
 .sidebar {
-  border: 1px solid #000;
+  background-color: var(--gold-accent);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  text-align: center;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  padding: 1rem;
 }
 
 .c1 {
@@ -179,16 +273,34 @@ li a:focus {
   grid-area: cont2;
 }
 
-.content h3 {
-  margin-bottom: 10px;
+.content {
+  padding: 1.5rem;
+  background: var(--sand-warm);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Estil de les targetes d'imatge amb text inferior centrat */
+.content h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--navy-deep);
+  margin-bottom: 0.5rem;
+}
+
+.content p {
+  font-size: 1rem;
+  color: var(--text-slate);
+  font-style: italic;
+}
+
 .card {
   position: relative;
-  border: 1px solid #000;
   overflow: hidden;
-  height: 200px;
+  height: 18rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .img1 {
@@ -208,47 +320,62 @@ li a:focus {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.card:hover img {
+  transform: scale(1.1);
 }
 
 .card span {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: white;
-  border-top: 1px solid #000;
-  text-align: center;
-  padding: 5px 0;
-  text-transform: lowercase;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+  color: var(--navy-deep);
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Galeria */
 #galeria {
-  padding: 50px 5%;
-  text-align: left;
+  padding: 6rem 5%;
+  background-color: var(--sand-warm);
 }
 
 #galeria h4 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--navy-deep);
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .galeria-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1.5rem;
   justify-content: center;
 }
 
 .galeria-flex img {
-  width: 250px;
-  height: auto;
-  background: white;
-  padding: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  width: calc(25% - 2rem);
+  min-width: 250px;
+  height: 14rem;
   object-fit: cover;
-  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+  border: 4px solid var(--white);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-smooth);
   cursor: pointer;
 }
 
@@ -256,139 +383,182 @@ li a:focus {
 .galeria-flex img:nth-child(4),
 .galeria-flex img:nth-child(5),
 .galeria-flex img:nth-child(8) {
-  filter: brightness(60%);
+  filter: brightness(0.6);
 }
 
 .galeria-flex img:hover {
-  box-shadow: 0 0 10px rgba(6, 142, 232, 0.709);
-  filter: brightness(80%) !important;
+  border-color: var(--gold-accent);
+  filter: brightness(0.4) !important;
+  transform: translateY(-5px);
 }
 
 /* Reserva */
 #reserva {
-  padding: 80px 5%;
+  padding: 8rem 5%;
+  background-color: var(--white);
 }
 
 #reserva h2 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  text-align: left;
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--navy-deep);
+  margin-bottom: 3rem;
+  text-align: center;
 }
 
 #reserva form {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 2rem;
+  max-width: 60rem;
+  margin: 0 auto;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  width: calc(50% - 10px);
-  min-width: 280px;
+  flex: 1;
+  min-width: 18rem;
 }
 
 .full-width {
-  width: 100%;
+  flex: 100%;
 }
 
 #reserva label {
-  font-weight: bold;
-  margin-bottom: 8px;
-  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--navy-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
 }
 
 #reserva input,
 #reserva textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background-color: var(--sand-warm);
+  border-radius: 0.5rem;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  font-family: var(--font-body);
+  transition: var(--transition-smooth);
 }
 
 #reserva input:focus,
 #reserva textarea:focus {
   outline: none;
-  border-color: #000;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-color: var(--gold-accent);
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.1);
 }
 
-#reserva button {
-  text-align: right;
-  background-color: #000;
-  color: #fff;
-  padding: 15px 40px;
+.btn-submit {
+  background-color: var(--navy-deep);
+  color: var(--white);
+  padding: 1.25rem 4rem;
   border: none;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: bold;
+  border-radius: 3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
+  transition: var(--transition-smooth);
+  margin: 2rem auto 0;
+  display: block;
 }
 
-#reserva button:hover {
-  background-color: #333;
+.btn-submit:hover {
+  background-color: var(--gold-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
 }
 
 /* Footer */
 footer {
-  background-color: #000000;
-  color: white;
-  padding: 40px 5%;
+  background-color: var(--navy-deep);
+  color: var(--white);
+  padding: 4rem 10%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #333;
+  gap: 2rem;
+  border-top: 2px solid var(--gold-accent);
 }
 
 footer > div:first-child {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 2.5rem;
 }
 
 .email {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.75rem;
+}
+
+.email span {
+  color: var(--gold-accent);
+  font-size: 1.5rem;
 }
 
 .email p {
   font-size: 1rem;
-  letter-spacing: 0.5px;
+  font-weight: 500;
+  letter-spacing: 0.05rem;
 }
 
 .logo img {
   display: block;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
-  filter: brightness(0) invert(1);
+  border: 2px solid var(--gold-accent);
+  filter: brightness(1.2);
+  transition: var(--transition-smooth);
+}
+
+.logo img:hover {
+  transform: rotate(360deg);
 }
 
 /* Floating button */
 .floating-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #000000;
-  padding: 15px 25px;
-  border-radius: 50px;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  background-color: var(--gold-accent);
+  padding: 1rem 2.5rem;
+  border-radius: 3rem;
   z-index: 1000;
-  transition: transform 0.2s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: var(--transition-smooth);
 }
 
 .floating-button:hover {
-  transform: scale(1.05);
+  transform: scale(1.1) translateY(-5px);
+  background-color: var(--white);
 }
 
 .floating-button a {
-  color: white;
+  color: var(--white);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+}
+
+.floating-button:hover a {
+  color: var(--navy-deep);
 }
 
 .floating-button a:focus {
-  outline: 2px solid black;
+  outline: 2px solid var(--gold-accent);
   outline-offset: 6px;
 }
