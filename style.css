@@ -4,8 +4,8 @@
   --gold-accent: #c5a059;
   --text-slate: #334155;
   --white: #ffffff;
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'Montserrat', sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Montserrat", sans-serif;
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -61,7 +61,7 @@ li a {
 }
 
 li a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -217,18 +217,15 @@ li a:focus {
 
 .carta-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(1fr, 1fr)
-  );
+  grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
   grid-template-columns: 12rem 1fr 1fr;
   gap: 1.5rem;
   grid-template-areas:
-    'header header header'
-    'side1   cont1  cont1'
-    'side1   img1   img2'
-    'side2   cont2  cont2'
-    'side2   img3   img4';
+    "header header header"
+    "side1   cont1  cont1"
+    "side1   img1   img2"
+    "side2   cont2  cont2"
+    "side2   img3   img4";
 }
 
 /* Àrees del Grid */
@@ -561,4 +558,70 @@ footer > div:first-child {
 .floating-button a:focus {
   outline: 2px solid var(--gold-accent);
   outline-offset: 6px;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    align-items: center;
+    justify-content: center;
+  }
+  .contingut {
+    display: block;
+    left: 0% !important;
+    max-width: 100%;
+    margin: 2rem 1rem;
+  }
+  .about .row.reverse {
+    flex-wrap: nowrap;
+  }
+  article.row.reverse img {
+    width: 37%;
+  }
+  .carta-grid {
+    grid-template-columns: 12rem 1fr;
+    grid-template-areas:
+      "header header"
+      "side1 cont1"
+      "side1 img1"
+      "side1 img2"
+      "side2 cont2"
+      "side2 img3"
+      "side2 img4";
+  }
+  .logo {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .contingut {
+    display: none;
+  }
+  .carta-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "side1"
+      "cont1"
+      "img1"
+      "img2"
+      "side2"
+      "cont2"
+      "img3"
+      "img4";
+  }
+  .logo {
+    display: none;
+  }
+  article.row.reverse img {
+    width: 100%;
+  }
+  .about .row.reverse {
+    flex-wrap: wrap;
+  }
 }
