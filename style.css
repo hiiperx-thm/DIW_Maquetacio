@@ -560,16 +560,14 @@ footer > div:first-child {
   outline-offset: 6px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   nav ul {
     align-items: center;
     justify-content: center;
   }
   .contingut {
     display: block;
-    left: 0% !important;
     max-width: 100%;
-    margin: 2rem 1rem;
   }
   .about .row.reverse {
     flex-wrap: nowrap;
@@ -593,7 +591,7 @@ footer > div:first-child {
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 577px) {
   nav ul {
     flex-direction: column;
     align-items: center;
