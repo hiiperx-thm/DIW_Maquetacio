@@ -4,8 +4,8 @@
   --gold-accent: #c5a059;
   --text-slate: #334155;
   --white: #ffffff;
-  --font-display: "Cormorant Garamond", serif;
-  --font-body: "Montserrat", sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -39,6 +39,14 @@ header {
   width: 100%;
   z-index: 1000;
   border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+  transition: padding 0.3s ease, background-color 0.3s ease; /* Exercici 5 */
+}
+
+/* Exercici 5: Classe aplicada per JS en fer scroll */
+.header-shrink {
+  padding: 0.6rem 5%;
+  background-color: rgba(15, 23, 42, 1);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 nav ul {
@@ -61,7 +69,7 @@ li a {
 }
 
 li a::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -107,32 +115,47 @@ li a:focus {
   top: 50%;
   left: 10%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(193, 193, 193, 0.75);
   backdrop-filter: blur(8px);
   border-left: 5px solid var(--gold-accent);
   padding: 3rem;
   text-align: left;
   max-width: 40rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1s ease-out;
+  animation: textAppears 3s ease-out forwards;
   z-index: 2;
 }
 
-@keyframes fadeIn {
-  from {
+/* Exercici 2: Animació de 4 frames i 3 propietats (opacity, transform, color) */
+@keyframes textAppears {
+  0% {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateY(0);
+    color: transparent;
   }
-  to {
+  33% {
+    opacity: 0.4;
+    transform: translateY(-20%);
+    color: rgba(255, 165, 0, 0.5);
+  }
+  66% {
+    opacity: 0.8;
+    transform: translateY(-35%);
+    color: orange;
+  }
+  100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(-50%);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   }
 }
 
 .capsalera h1 {
   font-family: var(--font-display);
   font-size: 4.5rem;
-  color: var(--navy-deep);
+  color: inherit;
+  text-shadow: inherit;
   margin-bottom: 1rem;
   line-height: 1;
 }
@@ -140,13 +163,13 @@ li a:focus {
 .capsalera h1 strong {
   display: block;
   font-weight: 700;
-  color: var(--gold-accent);
+  color: inherit;
 }
 
 .capsalera p {
   font-size: 1.25rem;
-  color: var(--text-slate);
-  font-style: italic;
+  color: inherit;
+  text-shadow: none;
 }
 
 /* Sobre nosaltres */
@@ -221,11 +244,11 @@ li a:focus {
   grid-template-columns: 12rem 1fr 1fr;
   gap: 1.5rem;
   grid-template-areas:
-    "header header header"
-    "side1   cont1  cont1"
-    "side1   img1   img2"
-    "side2   cont2  cont2"
-    "side2   img3   img4";
+    'header header header'
+    'side1   cont1  cont1'
+    'side1   img1   img2'
+    'side2   cont2  cont2'
+    'side2   img3   img4';
 }
 
 /* Àrees del Grid */
@@ -364,29 +387,94 @@ li a:focus {
   justify-content: center;
 }
 
-.galeria-flex img {
+/* Exercici 1: Contenidor per controlar l'overflow del scale */
+.galeria-item {
   width: calc(25% - 2rem);
   min-width: 250px;
   height: 14rem;
-  object-fit: cover;
   border-radius: 0.5rem;
+  overflow: hidden; /* Evita que la imatge surti al fer zoom */
   border: 4px solid var(--white);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: var(--transition-smooth);
+  transition: border-color 0.4s ease;
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Exercici 1: Transició amb scale, rotate i grayscale */
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
   cursor: pointer;
 }
 
-.galeria-flex img:nth-child(1),
-.galeria-flex img:nth-child(4),
-.galeria-flex img:nth-child(5),
-.galeria-flex img:nth-child(8) {
+/* Selecció d'imatges amb brillantor reduïda inicial */
+.galeria-item:nth-child(1) img,
+.galeria-item:nth-child(4) img,
+.galeria-item:nth-child(5) img,
+.galeria-item:nth-child(8) img {
   filter: brightness(0.6);
 }
 
-.galeria-flex img:hover {
+/* Exercici 1: Estat hover amb les 3 transformacions demanades */
+.galeria-item:hover {
   border-color: var(--gold-accent);
-  filter: brightness(0.4) !important;
-  transform: translateY(-5px);
+}
+
+.galeria-item:hover img {
+  transform: scale(1.1) rotate(3deg);
+  filter: grayscale(0.5) brightness(0.8);
+}
+
+/* Apartat Vídeo (Exercici 4) */
+#apartat-video {
+  padding: 4rem 5%;
+  background-color: var(--sand-warm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+}
+
+.video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  backdrop-filter: blur(4px);
+}
+
+.btn-video {
+  color: white;
+  font-size: 2.5rem !important;
+  cursor: pointer;
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+.btn-video:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px white;
 }
 
 /* Reserva */
@@ -461,7 +549,11 @@ li a:focus {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  /* Exercici 1: Transició a criteri amb 3 propietats (bg, transform, shadow) */
+  transition:
+    background-color 0.4s ease,
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   margin: 2rem auto 0;
   display: block;
 }
@@ -578,13 +670,13 @@ footer > div:first-child {
   .carta-grid {
     grid-template-columns: 12rem 1fr;
     grid-template-areas:
-      "header header"
-      "side1 cont1"
-      "side1 img1"
-      "side1 img2"
-      "side2 cont2"
-      "side2 img3"
-      "side2 img4";
+      'header header'
+      'side1 cont1'
+      'side1 img1'
+      'side1 img2'
+      'side2 cont2'
+      'side2 img3'
+      'side2 img4';
   }
   .logo {
     display: none;
@@ -603,15 +695,15 @@ footer > div:first-child {
   .carta-grid {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "header"
-      "side1"
-      "cont1"
-      "img1"
-      "img2"
-      "side2"
-      "cont2"
-      "img3"
-      "img4";
+      'header'
+      'side1'
+      'cont1'
+      'img1'
+      'img2'
+      'side2'
+      'cont2'
+      'img3'
+      'img4';
   }
   .logo {
     display: none;
